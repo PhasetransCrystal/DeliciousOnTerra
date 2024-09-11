@@ -7,6 +7,8 @@
   "mixins": [
   ],
   "client": [
+    "NeoLoadingClientMixin",
+    "LoadingClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
