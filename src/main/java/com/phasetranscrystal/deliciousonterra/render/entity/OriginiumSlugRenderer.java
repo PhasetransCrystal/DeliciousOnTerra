@@ -6,8 +6,11 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class OriginiumSlugRenderer extends GeoEntityRenderer<OriginiumSlug> {
+    public static final DOTGeoModel<OriginiumSlug> MODEL = new DOTGeoModel<>("originium_slug","entity");
     public OriginiumSlugRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new DOTGeoModel<>("originium_slug","entity"));
+        super(renderManager, MODEL);
     }
+
+
 
 }

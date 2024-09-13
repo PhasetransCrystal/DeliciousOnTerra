@@ -1,5 +1,4 @@
 package com.phasetranscrystal.deliciousonterra;
-
 import com.mojang.logging.LogUtils;
 import com.phasetranscrystal.deliciousonterra.entity.EntityRegister;
 import com.phasetranscrystal.deliciousonterra.render.entity.OriginiumSlugRenderer;
@@ -17,14 +16,12 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
-import software.bernie.geckolib.GeckoLib;
 
 @Mod(DeliciousOnTerra.MODID)
 public class DeliciousOnTerra
 {
     public static final String MODID = "deliciousonterra";
     private static final Logger LOGGER = LogUtils.getLogger();
-
     public DeliciousOnTerra(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);

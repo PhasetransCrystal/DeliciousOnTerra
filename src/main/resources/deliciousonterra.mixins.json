@@ -5,10 +5,14 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "DeliciousOnTerra.refmap.json",
   "mixins": [
+
   ],
   "client": [
+    "LoadingClientMixin",
+    "MixinTitleScreen",
     "NeoLoadingClientMixin",
-    "LoadingClientMixin"
+    "MinecraftClientMixin",
+    "MixinLivingEntityRenderer"
   ],
   "injectors": {
     "defaultRequire": 1
