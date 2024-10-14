@@ -9,8 +9,7 @@ public class OriginiumSlugRenderer extends GeoEntityRenderer<OriginiumSlug> {
     public static final DOTGeoModel<OriginiumSlug> MODEL = new DOTGeoModel<>("originium_slug","entity");
     public OriginiumSlugRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, MODEL);
+        super.withScale(0.5f);
     }
-
-
 
 }

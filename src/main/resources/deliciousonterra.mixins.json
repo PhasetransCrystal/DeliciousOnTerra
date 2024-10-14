@@ -9,10 +9,7 @@
   ],
   "client": [
     "LoadingClientMixin",
-    "MixinTitleScreen",
-    "NeoLoadingClientMixin",
-    "MinecraftClientMixin",
-    "MixinLivingEntityRenderer"
+    "NeoLoadingClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

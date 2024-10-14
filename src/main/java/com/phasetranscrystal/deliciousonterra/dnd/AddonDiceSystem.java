@@ -1,0 +1,82 @@
+package com.phasetranscrystal.deliciousonterra.dnd;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class AddonDiceSystem {
+    private final Dice dice;
+    private final AddonValue addonValue;
+    private final int TARGET_VALUE;
+    private int rolled = 0;
+    private int rollTime = 1;
+
+    public AddonDiceSystem(int dice, AddonValue addonValue, int targetValue){
+        this.dice = new Dice(dice);
+        this.addonValue = addonValue;
+        this.TARGET_VALUE = targetValue;
+    }
+    public AddonDiceSystem(int dice, int targetValue){
+        this.dice = new Dice(dice);
+        this.addonValue = new AddonValue();
+        this.TARGET_VALUE = targetValue;
+    }
+
+    private void roll(){
+        AtomicInteger rolled = new AtomicInteger(dice.roll());
+        if (rolled.get() > 3  || rolled.get() < 20){
+            this.addonValue.getAddonValue().forEach((s, check) -> {
+              //  int roll = rolled.get();
+                rolled.addAndGet(check);
+               // System.out.println("name: "+ s + " addon " + check);
+               // System.out.println(roll + " -> " + rolled.get());
+            });
+            this.rolled = rolled.get();
+        }
+        this.rollTime -= 1;
+    }
+
+    public void addRollTime(int time){
+        this.rollTime += time;
+    }
+
+    public boolean startRoll(){
+        if(rollTime > 0){
+            this.roll();
+            return this.testResult();
+        }
+        System.out.println("error : rollTime = 0");
+        return false;
+    }
+
+    public int getRolled() {
+        return rolled;
+    }
+
+    public int getRollTime() {
+        return rollTime;
+    }
+
+    public int getTARGET_VALUE() {
+        return TARGET_VALUE;
+    }
+
+    public AddonValue getAddonValue() {
+        return addonValue;
+    }
+
+    public boolean testResult(){
+        if(rolled >= TARGET_VALUE){
+            System.out.println("success: "+ rolled + " >= " + this.TARGET_VALUE);
+            return true;
+        }else if(rolled == 1){
+            System.out.println("big fail: "+ rolled + " < " + this.TARGET_VALUE);
+            return false;
+        }else if(rolled == 20){
+            System.out.println("big success: MAX"+ " >= " + this.TARGET_VALUE);
+            return true;
+        }else{
+            System.out.println("fail: "+ rolled + " < " + this.TARGET_VALUE);
+            return false;
+        }
+    }
+
+}
