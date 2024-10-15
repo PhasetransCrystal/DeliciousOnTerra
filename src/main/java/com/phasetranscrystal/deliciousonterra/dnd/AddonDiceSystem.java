@@ -9,6 +9,7 @@ public class AddonDiceSystem {
     private int rolled = 0;
     private int rollTime = 1;
 
+
     public AddonDiceSystem(int dice, AddonValue addonValue, int targetValue){
         this.dice = new Dice(dice);
         this.addonValue = addonValue;
@@ -24,10 +25,14 @@ public class AddonDiceSystem {
         AtomicInteger rolled = new AtomicInteger(dice.roll());
         if (rolled.get() > 3  || rolled.get() < 20){
             this.addonValue.getAddonValue().forEach((s, check) -> {
-              //  int roll = rolled.get();
-                rolled.addAndGet(check);
-               // System.out.println("name: "+ s + " addon " + check);
-               // System.out.println(roll + " -> " + rolled.get());
+                if(DNDConfig.debug){
+                    int roll = rolled.get();
+                    rolled.addAndGet(check);
+                    System.out.println("name: "+ s + " addon " + check);
+                    System.out.println(roll + " -> " + rolled.get());
+                }else{
+                    rolled.addAndGet(check);
+                }
             });
             this.rolled = rolled.get();
         }

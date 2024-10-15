@@ -13,7 +13,9 @@ public class Core {
     public static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
-        AddonDiceSystem sys = new AddonDiceSystem(20,99);
+        AddonValue addon = new AddonValue().setAddonValue("lucky",8).setAddonValue("weakness",-3);
+        DNDConfig.debug = true;
+        AddonDiceSystem sys = new AddonDiceSystem(20,addon,99);
         sys.addRollTime(99);
         sys.startRoll();
     }
