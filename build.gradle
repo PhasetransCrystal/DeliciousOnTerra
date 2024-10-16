@@ -21,6 +21,12 @@ repositories {
         name 'IzzelAliz Maven'
         url 'https://maven.izzel.io/releases/'
     }
+
+    maven {
+        name 'Curse Maven'
+        url "https://www.cursemaven.com"
+    }
+
     mavenCentral()
 
 }
@@ -93,7 +99,7 @@ dependencies {
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
     implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
-    implementation fg.deobf("icyllis.modernui:ModernUI-Forge:${minecraft_version}-${modernui_version}.+")
+    implementation "curse.maven:modern-ui-${modernui_path}"
 
     // Modern UI core framework
     implementation "icyllis.modernui:ModernUI-Core:${modernui_version}"
