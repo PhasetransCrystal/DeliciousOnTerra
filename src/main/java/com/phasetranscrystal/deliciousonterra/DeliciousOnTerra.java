@@ -1,6 +1,8 @@
 package com.phasetranscrystal.deliciousonterra;
 import com.mojang.logging.LogUtils;
 import com.phasetranscrystal.deliciousonterra.entity.EntityRegister;
+import com.phasetranscrystal.deliciousonterra.item.DOTItemTabs;
+import com.phasetranscrystal.deliciousonterra.item.ItemRegister;
 import com.phasetranscrystal.deliciousonterra.render.entity.OriginiumSlugRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -26,6 +28,8 @@ public class DeliciousOnTerra
     {
         modEventBus.addListener(this::commonSetup);
         EntityRegister.ENTITY_TYPE.register(modEventBus);
+        ItemRegister.ITEMS.register(modEventBus);
+        DOTItemTabs.CREATIVE_MODE_TABS.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

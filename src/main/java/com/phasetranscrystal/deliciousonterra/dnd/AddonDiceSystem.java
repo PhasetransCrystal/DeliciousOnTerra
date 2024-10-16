@@ -3,20 +3,24 @@ package com.phasetranscrystal.deliciousonterra.dnd;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AddonDiceSystem {
+    public final String title;
     private final Dice dice;
     private final AddonValue addonValue;
     private final int TARGET_VALUE;
     private int rolled = 0;
     private int rollTime = 1;
+    public boolean isStart = false;
 
 
-    public AddonDiceSystem(int dice, AddonValue addonValue, int targetValue){
-        this.dice = new Dice(dice);
+    public AddonDiceSystem(String title, AddonValue addonValue, int targetValue){
+        this.title = title;
+        this.dice = new Dice(20);
         this.addonValue = addonValue;
         this.TARGET_VALUE = targetValue;
     }
-    public AddonDiceSystem(int dice, int targetValue){
-        this.dice = new Dice(dice);
+    public AddonDiceSystem(String title, int targetValue){
+        this.title = title;
+        this.dice = new Dice(20);
         this.addonValue = new AddonValue();
         this.TARGET_VALUE = targetValue;
     }
@@ -45,6 +49,7 @@ public class AddonDiceSystem {
 
     public boolean startRoll(){
         if(rollTime > 0){
+            isStart = true;
             this.roll();
             return this.testResult();
         }
